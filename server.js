@@ -11,7 +11,7 @@ app.get("/", function(){
 app.get("/new/*", function(req, res){
   let url = req.params[0];
   
-  if ( /^https?\:\/\/(www\.)?[\w\d]+\.\w+\/?$/i.test(url) === true ){
+  if ( /^https?\:\/\/(\w+\.)?[\w\d]+\.\w+\/?$/i.test(url) === true ){
     let shortenedURL = "https://fcc-url-shortener-n0bl3.herokuapp.com/" + generatedURLs.length;
     generatedURLs.push(url);
     let json = {
