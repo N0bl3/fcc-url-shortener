@@ -7,8 +7,13 @@ app.use(express.static("client"))
 })
 .get("/new/:url", function(req, res){
   var url = req.params.url;
-  if ( url === /^https?:\/\/[\w\d]+\.[\w]+$/i){
-    res.end(url);
+  if ( url === /^https?:\/\/[\w\d]+\.[\w]+\/?$/i){
+    var shortenedURL = "http://fcc-url-shortener-n0bl3.herokuapp.com/x";
+    var json = {
+      url,
+      shortenedURL
+    };
+    res.end(json);
   } else {
     res.status(400).end("Error 400: Bad Request");
   }
