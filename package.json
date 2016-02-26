@@ -1,0 +1,11 @@
+{
+  "name": "fcc-url-shortener",
+  "version": "0.0.1",
+  "description": "An URL shortener for FreeCodeCamp Certification",
+  "main": "server.js",
+  "repository": "",
+  "author": "Alexandre Noble",
+  "dependencies": {
+    "express": "~3.2.4"
+  }
+}
