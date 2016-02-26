@@ -1,24 +1,41 @@
-var express = require('express');
+"use strict"
+let express = require('express');
 
-var app = express();
-app.use(express.static("client"))
-.get("/", function(){
+let app = express();
+let generatedURLs = [];
+
+app.use(express.static("client"));
+app.get("/", function(){
   app.render("index.html");
-})
-.get("/new/:url", function(req, res){
-  var url = req.params.url;
-  if ( url === /^https?:\/\/[\w\d]+\.[\w]+\/?$/i){
-    var shortenedURL = "http://fcc-url-shortener-n0bl3.herokuapp.com/x";
-    var json = {
+});
+app.get("/new/*", function(req, res){
+  let url = req.params[0];
+  
+  if ( /^https?\:\/\/(www\.)?[\w\d]+\.\w+\/?$/i.test(url) === true ){
+    let shortenedURL = "https://fcc-url-shortener-n0bl3.herokuapp.com/" + generatedURLs.length;
+    generatedURLs.push(url);
+    let json = {
       url,
       shortenedURL
     };
-    res.end(json);
+    res.end(JSON.stringify(json));
   } else {
     res.status(400).end("Error 400: Bad Request");
   }
 });
-
-app.listen(process.env.PORT || 3000, process.env.IP || "0.0.0.0", function(){
-  console.log("Server started");
+app.get("/*", function(req, res){
+  let target = req.params[0];
+  console.log(target);
+  if ( /^\d+$/.test(target) && generatedURLs[target] ) {
+    res.redirect(generatedURLs[target]);
+  } else {
+    res.status(400).end("Error 400: Bad request");
+  }
+});
+app.listen(process.env.PORT || 3000, function(err){
+  if (!err){
+    console.log("Server started");
+  } else {
+    console.log(err);
+  }
 });
