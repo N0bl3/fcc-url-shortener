@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app>
+<html lang="en">
   <head>
     <title>URL Shortener</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,20 +12,20 @@
     </style>
   </head>
   <body>
-    <div class="container" ng-controller="ChatController">
+    <div class="container">
       <div class="page-header">
         <h1>URL Shortener</h1>
       </div>
       <div class="row">
         <p>Try these links:<br>
-        <a href="https://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.google.com">http://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.google.com</a><br>
+        <a href="https://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.google.com/">http://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.google.com/</a><br>
         <a href="https://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.freecodecamp.com/">http://fcc-url-shortener-n0bl3.herokuapp.com/new/http://www.freecodecamp.com/</a><br>
         or try yours directly in the URL:<br>
-        http://fcc-url-shortener-n0bl3.herokuapp.com/new/URL
+        http://fcc-url-shortener-n0bl3.herokuapp.com/new/[URL]<br>
+        Please note that memory is not persistent.
         </p>
       </div>
     </div>
-    <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
   </body>
 </html>
